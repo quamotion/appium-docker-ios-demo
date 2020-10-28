@@ -11,4 +11,4 @@ Docker.
 
 1. [Create a self-hosted agent](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser#install)
 2. Install `usbmuxd`: `apt-get install -y usbmuxd libimobiledevice-utils`
-3. Install Docker: `apt-get install -y docker.io`
+3. Install Docker: `apt-get install -y docker.io`. [Add the user which runs the Azure Pipeline agent to the docker group.](https://docs.docker.com/engine/install/linux-postinstall/)

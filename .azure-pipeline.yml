@@ -2,8 +2,10 @@ resources:
   containers:
   - container: node
     image: node:12
+    options: "-v /usr/bin/docker:/tmp/docker:ro"
   - container: appium
     image: quamotion/appium-docker-ios:1.0.1
+    options: "--name job-$(Build.BuildId) -v /var/run/usbmuxd:/var/run/usbmuxd"
 
 pool: default
 
@@ -14,4 +16,12 @@ services:
 
 steps:
 - script: |
-    echo "Hello, World!"
+    /tmp/docker exec -t -u 0 job-$(Build.BuildId) \
+    sh -c "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confold" -y install sudo"
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y --no-install-recommends libimobiledevice-utils
+  displayName: "Install libimobiledevice-utils"
+- script: |
+    idevice_id -l
+  displayName: "List available iOS devices"
