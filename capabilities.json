@@ -1,0 +1,11 @@
+{
+  "desiredCapabilities":
+  {
+    "platformName":"iOS",
+    "automationName":"XCUITest",
+    "deviceName":"iPhone",
+    "udid":"fc810465f67fd84d8fd88aa910a6ea3ff497e540",
+    "bundleId":"com.apple.Preferences",
+    "showXcodeLog": true
+  }
+}
