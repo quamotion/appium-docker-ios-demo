@@ -1,0 +1,17 @@
+resources:
+  containers:
+  - container: node
+    image: node:12
+  - container: appium
+    image: quamotion/appium-docker-ios:1.0.1
+
+pool: default
+
+container: node
+
+services:
+  appium: appium
+
+steps:
+- script: |
+    echo "Hello, World!"
